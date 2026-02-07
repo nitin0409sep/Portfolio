@@ -332,10 +332,10 @@ export function LandingIntro() {
                         transition={{ duration: 0.6, delay: 0.3 }}
                         className="text-center shrink-0 z-10"
                     >
-                        <h1 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
+                        <h1 className="text-2xl md:text-4xl font-bold text-white tracking-tight pt-2">
                             {t("title")}
                         </h1>
-                        <p className="text-indigo-300/70 text-sm md:text-base mt-2">
+                        <p className="text-indigo-300/70 text-sm md:text-base mt-2 pb-2">
                             {t("subtitle")}
                         </p>
                     </motion.div>
@@ -359,7 +359,7 @@ export function LandingIntro() {
                     </motion.div>
 
                     {/* Bottom controls */}
-                    <div className="flex flex-col items-center shrink-0 z-10 pb-6">
+                    <div className="flex flex-col items-center shrink-0 z-10 pb-6 mt-2">
                         {/* Language Selection */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
