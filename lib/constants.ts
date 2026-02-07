@@ -15,12 +15,12 @@ export const RESUME_DATA = {
         social: [
             {
                 name: "GitHub",
-                url: "https://github.com/nitin5september", // Placeholder based on email
+                url: "https://github.com/nitin0409sep", // Placeholder based on email
                 icon: "github",
             },
             {
                 name: "LinkedIn",
-                url: "https://www.linkedin.com/in/nitin-verma-99", // Placeholder based on common pattern, will update if user provides
+                url: "https://www.linkedin.com/in/nitin0409sep", // Placeholder based on common pattern, will update if user provides
                 icon: "linkedin",
             },
         ],
