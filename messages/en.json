@@ -1,0 +1,64 @@
+{
+  "Navigation": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "experience": "Experience",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "Hero": {
+    "role": "Full-Stack Software Development Engineer",
+    "cta_primary": "View My Work",
+    "cta_secondary": "Download Resume",
+    "greeting": "Hello, I'm"
+  },
+  "About": {
+    "title": "About Me",
+    "description": "Software Development Engineer with 2.5+ years of experience in full stack development, proficient in building scalable and responsive web applications. Skilled in both front-end and back-end technologies including React, Angular, Node.js, and databases like PostgreSQL and MongoDB. Successfully contributed to 5+ industry-grade projects. Committed to writing clean, modular code and continually improving system efficiency and reliability.",
+    "stats": {
+      "experience": "Years of Experience",
+      "projects": "Projects Completed",
+      "contributions": "Code Commits"
+    }
+  },
+  "Skills": {
+    "title": "Technical Arsenal",
+    "subtitle": "A constellation of technologies I use to build scalable solutions."
+  },
+  "Experience": {
+    "title": "Professional Journey",
+    "present": "Present"
+  },
+  "Projects": {
+    "title": "Featured Projects",
+    "view_project": "View Project",
+    "source_code": "Source Code",
+    "tech_stack": "Tech Stack"
+  },
+  "Contact": {
+    "title": "Let's Connect",
+    "subtitle": "Have a project in mind or want to discuss modern web technologies?",
+    "name_label": "Name",
+    "email_label": "Email",
+    "message_label": "Message",
+    "send_button": "Send Message",
+    "copy_email": "Copy Email"
+  },
+  "Theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "customize": "Customize Theme"
+  },
+  "Landing": {
+    "title": "Welcome to My World",
+    "subtitle": "Explore my portfolio from anywhere on the globe",
+    "choose_language": "Choose your language",
+    "start": "Start Exploring"
+  },
+  "Footer": {
+    "rights": "All rights reserved.",
+    "built_with": "Built with Next.js, Tailwind & Framer Motion"
+  }
+}

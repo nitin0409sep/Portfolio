@@ -1,0 +1,64 @@
+{
+  "Navigation": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "skills": "Habilidades",
+    "experience": "Experiencia",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "Hero": {
+    "role": "Ingeniero de Desarrollo de Software Full-Stack",
+    "cta_primary": "Ver Mi Trabajo",
+    "cta_secondary": "Descargar CV",
+    "greeting": "Hola, soy"
+  },
+  "About": {
+    "title": "Sobre Mí",
+    "description": "Ingeniero de Desarrollo de Software con más de 2.5 años de experiencia en desarrollo full stack, competente en la creación de aplicaciones web escalables y responsivas. Hábil en tecnologías front-end y back-end, incluyendo React, Angular, Node.js, y bases de datos como PostgreSQL y MongoDB. He contribuido exitosamente a más de 5 proyectos de nivel industrial.",
+    "stats": {
+      "experience": "Años de Experiencia",
+      "projects": "Proyectos Completados",
+      "contributions": "Commits de Código"
+    }
+  },
+  "Skills": {
+    "title": "Arsenal Técnico",
+    "subtitle": "Una constelación de tecnologías que uso para construir soluciones escalables."
+  },
+  "Experience": {
+    "title": "Trayectoria Profesional",
+    "present": "Presente"
+  },
+  "Projects": {
+    "title": "Proyectos Destacados",
+    "view_project": "Ver Proyecto",
+    "source_code": "Código Fuente",
+    "tech_stack": "Stack Tecnológico"
+  },
+  "Contact": {
+    "title": "Conectemos",
+    "subtitle": "¿Tienes un proyecto en mente o quieres hablar sobre tecnologías web modernas?",
+    "name_label": "Nombre",
+    "email_label": "Correo",
+    "message_label": "Mensaje",
+    "send_button": "Enviar Mensaje",
+    "copy_email": "Copiar Correo"
+  },
+  "Theme": {
+    "light": "Claro",
+    "dark": "Oscuro",
+    "system": "Sistema",
+    "customize": "Personalizar Tema"
+  },
+  "Landing": {
+    "title": "Bienvenido a Mi Mundo",
+    "subtitle": "Explora mi portafolio desde cualquier lugar del mundo",
+    "choose_language": "Elige tu idioma",
+    "start": "Comenzar a Explorar"
+  },
+  "Footer": {
+    "rights": "Todos los derechos reservados.",
+    "built_with": "Hecho con Next.js, Tailwind y Framer Motion"
+  }
+}
