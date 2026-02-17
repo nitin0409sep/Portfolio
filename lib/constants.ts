@@ -1,4 +1,6 @@
-export const RESUME_DATA = {
+import { ResumeData } from "@/types";
+
+export const RESUME_DATA: ResumeData = {
     name: "Nitin Verma",
     initials: "NV",
     location: "Self-driven, Remote-capable",
@@ -44,7 +46,7 @@ export const RESUME_DATA = {
             start: "June 2023",
             end: "Current",
             description:
-                "Contributed to 3 industry-grade projects across various domains, delivering modular, reusable code for 80+ workflows. Developed responsive UIs using Angular, React, Tailwind CSS, and Material Design. Designed secure RESTful services using Next.js, Drizzle ORM, and PostgreSQL. Implemented RBAC, digital signatures, and automated email campaigns.",
+                "Contributed to 5+ industry-grade projects across various domains, delivering modular, reusable code for 80+ workflows. Developed responsive UIs using Angular, React, Tailwind CSS, and Material Design. Designed secure RESTful services using Next.js, Drizzle ORM, and PostgreSQL. Implemented RBAC, digital signatures, and automated email campaigns.",
         },
     ],
     skills: [

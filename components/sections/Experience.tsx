@@ -1,12 +1,39 @@
 
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { RESUME_DATA } from "@/lib/constants";
 import { BriefcaseIcon, CalendarIcon } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+
+const cardVariant: Variants = {
+    hidden: { opacity: 0, x: -40, filter: "blur(6px)" },
+    visible: (i: number) => ({
+        opacity: 1,
+        x: 0,
+        filter: "blur(0px)",
+        transition: {
+            delay: i * 0.2,
+            duration: 0.6,
+            ease: [0.25, 0.4, 0.25, 1] as [number, number, number, number],
+        },
+    }),
+};
+
+const dotVariant: Variants = {
+    hidden: { scale: 0, opacity: 0 },
+    visible: (i: number) => ({
+        scale: 1,
+        opacity: 1,
+        transition: {
+            delay: i * 0.2 + 0.1,
+            type: "spring" as const,
+            stiffness: 300,
+            damping: 20,
+        },
+    }),
+};
 
 export function Experience() {
     const t = useTranslations('Experience');
@@ -14,55 +41,91 @@ export function Experience() {
     return (
         <section id="experience" className="py-24 bg-background">
             <div className="container px-4 md:px-6">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-16">{t('title')}</h2>
+                <motion.div
+                    initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+                    whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] as [number, number, number, number] }}
+                    className="text-center mb-16"
+                >
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">{t('title')}</h2>
+                </motion.div>
 
-                <div className="relative max-w-4xl mx-auto pl-8 sm:pl-0">
+                <div className="relative max-w-3xl mx-auto">
 
                     {/* Vertical Line */}
-                    <div className="absolute left-[19px] sm:left-1/2 top-0 bottom-0 w-1 bg-border -translate-x-1/2" />
+                    <motion.div
+                        initial={{ scaleY: 0 }}
+                        whileInView={{ scaleY: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, ease: "easeInOut" }}
+                        className="absolute left-4 sm:left-8 top-0 bottom-0 w-px bg-border origin-top"
+                    />
 
-                    {RESUME_DATA.work.map((role, index) => (
-                        <motion.div
-                            key={role.company}
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.8, delay: index * 0.2 }}
-                            className={`relative flex items-center mb-12 flex-col sm:flex-row ${index % 2 === 0 ? "justify-end sm:text-right" : "justify-start sm:text-left"}`}
-                        >
+                    <div className="space-y-8">
+                        {RESUME_DATA.work.map((role, index) => (
+                            <div key={role.company} className="relative pl-12 sm:pl-20">
+                                {/* Timeline Dot */}
+                                <motion.div
+                                    custom={index}
+                                    variants={dotVariant}
+                                    initial="hidden"
+                                    whileInView="visible"
+                                    viewport={{ once: true, margin: "-50px" }}
+                                    className="absolute left-0 sm:left-4 top-6 flex items-center justify-center"
+                                >
+                                    <div className="w-8 h-8 rounded-full bg-primary/10 border-2 border-primary flex items-center justify-center">
+                                        <BriefcaseIcon className="w-3.5 h-3.5 text-primary" />
+                                    </div>
+                                </motion.div>
 
-                            {/* Timeline Dot */}
-                            <div className="absolute left-0 sm:left-1/2 w-10 h-10 rounded-full bg-background border-4 border-primary flex items-center justify-center -translate-x-1/2 z-10 sm:transform-none transform translate-x-[-1px]">
-                                <BriefcaseIcon className="w-5 h-5 text-primary" />
-                            </div>
-
-                            {/* Content Card */}
-                            <div className={`w-full sm:w-[calc(50%-40px)] ml-12 sm:ml-0 ${index % 2 === 0 ? "sm:pr-12" : "sm:pl-12"}`}>
-                                <Card className="hover:shadow-lg transition-shadow duration-300">
-                                    <CardHeader>
-                                        <div className={`flex flex-col gap-1 ${index % 2 === 0 ? "sm:items-end" : "sm:items-start"} items-start`}>
-                                            <h3 className="text-xl font-bold">{role.company}</h3>
-                                            <p className="text-sm text-muted-foreground font-medium">{role.title}</p>
-                                            <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                                                <CalendarIcon className="w-3 h-3" />
-                                                <span>{role.start} - {role.end === "Current" ? t('present') : role.end}</span>
-                                            </div>
-                                            <div className="flex gap-2 mt-2">
-                                                {role.badges.map((badge) => (
-                                                    <Badge key={badge} variant="secondary" className="text-xs">{badge}</Badge>
-                                                ))}
-                                            </div>
+                                {/* Content Card */}
+                                <motion.div
+                                    custom={index}
+                                    variants={cardVariant}
+                                    initial="hidden"
+                                    whileInView="visible"
+                                    viewport={{ once: true, margin: "-50px" }}
+                                    whileHover={{ y: -3, transition: { duration: 0.2 } }}
+                                    className="group relative rounded-xl border bg-card p-5 sm:p-6 transition-all duration-300 hover:shadow-md hover:border-primary/30"
+                                >
+                                    {/* Header */}
+                                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4 mb-3">
+                                        <div>
+                                            <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">
+                                                {role.company}
+                                            </h3>
+                                            <p className="text-sm font-medium text-muted-foreground">
+                                                {role.title}
+                                            </p>
                                         </div>
-                                    </CardHeader>
-                                    <CardContent>
-                                        <p className="text-sm text-muted-foreground leading-relaxed text-justify">
-                                            {role.description}
-                                        </p>
-                                    </CardContent>
-                                </Card>
+                                        <div className="flex items-center gap-1.5 text-xs text-muted-foreground whitespace-nowrap">
+                                            <CalendarIcon className="w-3 h-3" />
+                                            <span>{role.start} - {role.end === "Current" ? t('present') : role.end}</span>
+                                        </div>
+                                    </div>
+
+                                    {/* Description */}
+                                    <p className="text-sm text-muted-foreground leading-relaxed mb-4 text-justify">
+                                        {role.description}
+                                    </p>
+
+                                    {/* Tech Badges */}
+                                    <div className="flex flex-wrap gap-1.5">
+                                        {role.badges.map((badge) => (
+                                            <Badge
+                                                key={badge}
+                                                variant="secondary"
+                                                className="text-xs px-2 py-0.5 font-normal"
+                                            >
+                                                {badge}
+                                            </Badge>
+                                        ))}
+                                    </div>
+                                </motion.div>
                             </div>
-                        </motion.div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

@@ -1,0 +1,84 @@
+                                                       Nitin Verma
+                         (+91) 9415056824 nitin5september@gmail.com LinkedIn Github
+
+P ROFESSIONAL S UMMARY
+Software Development Engineer with 2.5+years of experience in full stack development, proficient in building
+scalable and responsive web applications. Skilled in both front-end and back-end technologies including React,
+Angular, Node.js, and databases like PostgreSQL and MongoDB. Successfully contributed to 5+ industry-grade
+projects. Committed to writing clean, modular code and continuously improving system efficiency and reliability.
+S KILLS
+Frontend Technologies: NEXT.js, React, Angular (14, 16, 17), Redux, RTK, Zustand, RxJS, NGRX, React Query, React
+Hook Form, Formik, Material UI, Bootstrap 5, Tailwind CSS, Shadcn, Framer Motion, Chart.js, Webpack, ESLint, Prettier
+Backend Technologies: Node.js, Express.js, NestJS, REST APIs, PostgreSQL, Docker, SQL, MongoDB, Socket.IO, Zod, Joi,
+ORMs – Drizzle, Sequelize, AWS (S3, CloudWatch Logger), Google Cloud Platform (Cloud Storage, Cloud Logging, Pub/Sub,
+Cloud Scheduler)
+Tools: VS Code, Sublime Merge, Git, Github, Postman, Fork, Docker
+Programming Languages: TypeScript, JavaScript
+W ORK E XPERIENCE
+Software Development Engineer                                                                           June 2023 - Current
+RemoteState, Noida, Uttar Pradesh, India (201301)
+• Contributed to 3 industry-grade projects across various domains, delivered modular, reusable code for more than
+  30+ workflows with a focus on scalability and performance.
+• Developed responsive, user-friendly, and interactive UIs using Angular, React, Tailwind CSS, and Material Design,
+  ensuring a consistent experience across devices.
+• Designed and implemented secure and scalable RESTful services using Next.js, Drizzle ORM, and PostgreSQL for
+  a smooth integration between frontend and backend systems.
+• Implemented authentication and role-based access control in React applications to enhance data security and
+  user management.
+• Integrated digital signature functionality and personalized content generation using SignWell and generative AI
+  APIs. Automated email campaigns and transactional notifications, improving user engagement and operational
+  efficiency.
+• Collaborated with customers and cross-functional teams to gather requirements and deliver feature-rich solu-
+  tions.
+• Proficient in Git and GitHub for version control, enabling a collaborative development process.
+
+E DUCATION
+IMS Engineering College, Ghaziabad, UP                                                                            2019-2023
+B.Tech (Computer Science and Engineering) - 71.2%
+Sumitra Modern SCH Vijay Laxmi NGR, Sitapur, UP                                                                   2017-2018
+Intermediate (Class XII) - CBSE - 64.6%
+Sumitra Modern SCH Vijay Laxmi NGR, Sitapur, UP                                                                   2015-2016
+Matriculate (Class X) - CBSE - 72.2%
+P ROJECTS
+•   Cab Buddy (Github Link)
+       • Developed a real-time ride-hailing application using React and Tailwind CSS for the front-end, and Node.js, Express,
+
+         and MongoDB for the backend.
+       • Integrated Google Maps APIs for location tracking, route optimization, and ride fare estimation.
+       • Implemented real-time communication using WebSockets (Socket.io) for instant ride updates between drivers and
+
+         users.
+       • Designed and implemented role-based authentication and authorization using JWT, allowing secure access for users
+
+         and captains.
+       • Planning to implement Redis for caching and session management to enhance performance and scalability for high
+
+         traffic and concurrent ride requests.
+       • Developed a responsive and user-friendly interface, ensuring seamless ride-booking experiences across devices.
+
+
+Blogify – Full-Stack Blogging Platform (Frontend Github Link) (Backend Github Link)
+    • Developed a fully responsive, interactive blogging platform using React, Redux Toolkit, and Material UI on the frontend,
+
+      and Node.js, Express, and PostgreSQL on the backend.
+    • Containerized the PostgreSQL database using Docker for a simplified setup and isolated environment.
+   • Integrated secure user authentication using JWT and Bcrypt, ensuring data protection with validation on both the
+     frontend (React Hook Form) and backend (Express-Validator).
+   • Admin role includes privileges to manage users and view all profiles, while the User role allows creating, editing, and
+
+     managing posts with options for public or private visibility.
+   • Enabled social interaction features, such as liking and commenting on public posts, with image uploads supported via
+
+     Multer and Cloudinary.
+Book Nexus (Github Link)
+   • Developed a web-based Library Management System using Angular and Bootstrap for the front-end, and Node.js,
+     Express, and MongoDB for the backend.
+   • Implemented robust security measures, including modern authentication protocols and session management tech-
+
+     niques, to safeguard data integrity and user privacy.
+   • Admin role includes privileges to add/delete books and manage user profiles.
+
+   • User role allows viewing issued books and performing actions on their profiles, such as editing information and chang-
+
+     ing passwords.
+
