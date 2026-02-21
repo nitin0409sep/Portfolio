@@ -8,7 +8,6 @@ import { RESUME_DATA } from "@/lib/constants";
 
 const roles = [
     "Full-Stack Engineer",
-    "SaaS System Architect",
     "React & Angular Developer",
     "Node.js Backend Engineer",
 ];

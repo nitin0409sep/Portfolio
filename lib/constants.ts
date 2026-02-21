@@ -40,7 +40,7 @@ export const RESUME_DATA: ResumeData = {
         {
             company: "RemoteState",
             link: "https://remotestate.com",
-            badges: ["Remote", "Full-Time"],
+            badges: ["Full-Time"],
             title: "Software Development Engineer",
             logo: "/remotestate-logo.png",
             start: "June 2023",

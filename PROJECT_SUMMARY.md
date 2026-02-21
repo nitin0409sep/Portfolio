@@ -106,7 +106,7 @@ Persisted to `localStorage` under key `portfolio-theme-storage`.
 
 ### 3. Landing Globe Animation
 
-**How it works**: On first visit (checked via `sessionStorage`), a full-screen overlay renders a 3D scene with `@react-three/fiber`. The globe is a **dotted sphere** (2000 points distributed using the golden ratio algorithm) with a wireframe overlay and decorative arcs between cities.
+**How it works**: On every visit, a full-screen overlay renders a 3D scene with `@react-three/fiber`. The globe is a **dotted sphere** (3500 points distributed using the golden ratio algorithm) with a wireframe overlay and decorative arcs between cities. The Canvas uses a fixed container height (`45vh`) and `resize={{ scroll: false }}` to prevent layout-triggered camera recalculations. A `FixedCamera` component locks the camera at position `[0, 0, 5]` with FOV 50 every frame.
 
 **Key algorithms**:
 - **Golden ratio point distribution** - Evenly spaces dots on sphere surface
@@ -115,7 +115,7 @@ Persisted to `localStorage` under key `portfolio-theme-storage`.
 
 **Geolocation**: Uses `navigator.geolocation` to detect user position. Falls back to New Delhi (28.6, 77.2) if denied.
 
-**Session handling**: After clicking "Start Exploring", sets `sessionStorage('portfolio-intro-seen')` so the intro only appears once per session.
+**Dismissal**: Clicking "Start Exploring" triggers an exit animation (fade out + scale up) and removes the overlay.
 
 ### 4. Animation Strategy
 

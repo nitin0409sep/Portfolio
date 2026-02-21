@@ -333,54 +333,42 @@ export function LandingIntro() {
                         {/* Globe - centered between title and controls */}
                         <motion.div
                             ref={globeContainerRef}
-                            initial={{ opacity: 0, scale: 0.8 }}
+                            initial={{ opacity: 0 }}
                             animate={{
                                 opacity: exiting ? 0 : 1,
                                 scale: exiting ? 1.5 : 1,
                             }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="flex-1 w-full min-h-0"
+                            className="w-full"
                             style={{
                                 display: "flex",
                                 alignItems: "center",
                                 justifyContent: "center",
                                 position: "relative",
-                                maxHeight: "45vh",
+                                height: "45vh",
                             }}
                         >
-                            <div 
-                                className="w-full h-full"
+                            <Canvas
+                                camera={{ position: [0, 0, 5], fov: 50 }}
+                                gl={{ antialias: true, alpha: true }}
+                                dpr={[1, 2]}
+                                resize={{ scroll: false }}
                                 style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center"
+                                    background: "transparent",
+                                    pointerEvents: "none"
+                                }}
+                                onCreated={(state) => {
+                                    const { camera, gl } = state;
+                                    camera.position.set(0, 0, 5);
+                                    if (camera instanceof THREE.PerspectiveCamera) {
+                                        camera.fov = 50;
+                                        camera.updateProjectionMatrix();
+                                    }
+                                    gl.domElement.style.pointerEvents = "none";
                                 }}
                             >
-                                <Canvas 
-                                    camera={{ position: [0, 0, 5], fov: 50 }} 
-                                    gl={{ antialias: true, alpha: true }}
-                                    dpr={[1, 2]}
-                                    style={{ 
-                                        background: "transparent", 
-                                        width: "100%", 
-                                        height: "100%",
-                                        pointerEvents: "none"
-                                    }}
-                                    onCreated={(state) => {
-                                        // Lock camera position - prevent auto-adjustment
-                                        const { camera, gl } = state;
-                                        camera.position.set(0, 0, 5);
-                                        if (camera instanceof THREE.PerspectiveCamera) {
-                                            camera.fov = 50;
-                                            camera.updateProjectionMatrix();
-                                        }
-                                        // Disable pointer events to prevent interactions
-                                        gl.domElement.style.pointerEvents = "none";
-                                    }}
-                                >
-                                    <GlobeScene userLocation={userLocation} />
-                                </Canvas>
-                            </div>
+                                <GlobeScene userLocation={userLocation} />
+                            </Canvas>
                         </motion.div>
 
                         {/* Bottom controls */}
