@@ -29,7 +29,7 @@ export function About() {
 
     const stats = [
         { value: "2.5+", label: t("stats.experience") },
-        { value: "3+", label: t("stats.projects") },
+        { value: "5+", label: t("stats.projects") },
         { value: "500+", label: t("stats.contributions") },
     ];
 
