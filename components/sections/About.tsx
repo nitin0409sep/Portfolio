@@ -58,11 +58,11 @@ export function About() {
                         whileInView="visible"
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.6, delay: 0.1 }}
-                        className="lg:col-span-2 flex flex-col items-center lg:items-start gap-6"
+                        className="lg:col-span-2 flex flex-col items-center gap-6"
                     >
                         {/* Avatar */}
                         <div className="relative">
-                            <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden border-2 border-border shadow-xl">
+                            <div className="w-24 h-24 rounded-2xl overflow-hidden border-2 border-border shadow-xl">
                                 <img
                                     src={RESUME_DATA.avatarUrl}
                                     alt={RESUME_DATA.name}
@@ -73,9 +73,9 @@ export function About() {
                         </div>
 
                         {/* Quick info */}
-                        <div className="space-y-3 text-center lg:text-left">
+                        <div className="space-y-3 text-center">
                             <h3 className="text-xl font-semibold">{RESUME_DATA.name}</h3>
-                            <div className="flex items-center gap-1.5 text-sm text-muted-foreground justify-center lg:justify-start">
+                            <div className="flex items-center gap-1.5 text-sm text-muted-foreground justify-center">
                                 <MapPin className="w-3.5 h-3.5" />
                                 {RESUME_DATA.location}
                             </div>

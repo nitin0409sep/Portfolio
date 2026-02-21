@@ -9,7 +9,7 @@ export const RESUME_DATA: ResumeData = {
         "Product-oriented Full Stack Engineer with 2.5+ years of experience designing and delivering scalable SaaS systems using TypeScript, Angular, React, and Node.js. Experienced in building modular frontend architectures, secure RESTful APIs, role-based access control systems, and real-time event-driven workflows.",
     summary:
         "Strong focus on clean architecture, performance optimization, and production-grade engineering standards.",
-    avatarUrl: "https://github.com/nitin5september.png",
+    avatarUrl: "/nitin.jpeg",
     personalWebsiteUrl: "#",
     contact: {
         email: "nitin5september@gmail.com",
