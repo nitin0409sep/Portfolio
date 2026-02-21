@@ -116,8 +116,8 @@ export function Hero() {
                         {t("cta_primary")}
                     </motion.a>
                     <motion.a
-                        href="/Nitin_Verma_Resume.pdf"
-                        download="Nitin_Verma_Resume.pdf"
+                        href="/Nitin_Resume.pdf"
+                        download="Nitin_Resume.pdf"
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
                         className="inline-flex items-center gap-2 px-8 py-3 rounded-lg border border-border bg-background/50 backdrop-blur-sm hover:bg-accent hover:text-accent-foreground transition-all"

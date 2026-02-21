@@ -105,7 +105,7 @@
 ## 6. Execution Plan
 1.  **Scaffold**: Init Next.js, Setup Tailwind, Radix, Lucide.
 2.  **Core**: Implement `ThemeStore` and `Lenis` wrapper.
-3.  **Data**: Transform `Nitin_Verma_Resume.pdf` content into structure JSON in `lib/data.ts`.
+3.  **Data**: Transform `Nitin_Resume.pdf` content into structure JSON in `lib/data.ts`.
 4.  **Components**: Build base UI (Buttons, Cards).
 5.  **Sections**: Build each section iteratively, focusing on animation and responsiveness.
 6.  **Polish**: Add i18n translations, verify accessibility, optimize performance.
