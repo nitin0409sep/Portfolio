@@ -8,26 +8,27 @@
     "contact": "Contact"
   },
   "Hero": {
-    "role": "Full-Stack Software Development Engineer",
+    "greeting": "Hello, I'm",
     "cta_primary": "View My Work",
     "cta_secondary": "Download Resume",
-    "greeting": "Hello, I'm"
+    "status": "Open to opportunities"
   },
   "About": {
     "title": "About Me",
-    "description": "Software Development Engineer with 2.5+ years of experience in full stack development, proficient in building scalable and responsive web applications. Skilled in both front-end and back-end technologies including React, Angular, Node.js, and databases like PostgreSQL and MongoDB. Successfully contributed to 5+ industry-grade projects. Committed to writing clean, modular code and continually improving system efficiency and reliability.",
+    "description": "Product-oriented Full Stack Engineer with 2.5+ years of experience designing and delivering scalable SaaS systems using TypeScript, Angular, React, and Node.js. Experienced in building modular frontend architectures, secure RESTful APIs, role-based access control systems, and real-time event-driven workflows. Strong focus on clean architecture, performance optimization, and production-grade engineering standards.",
     "stats": {
       "experience": "Years of Experience",
-      "projects": "Projects Completed",
+      "projects": "Projects Shipped",
       "contributions": "Code Commits"
-    }
+    },
+    "education_title": "Education"
   },
   "Skills": {
-    "title": "Technical Arsenal",
-    "subtitle": "A constellation of technologies I use to build scalable solutions."
+    "title": "Technical Expertise",
+    "subtitle": "Technologies and tools I use to build scalable, production-grade applications"
   },
   "Experience": {
-    "title": "Professional Journey",
+    "title": "Professional Experience",
     "present": "Present"
   },
   "Projects": {
@@ -37,8 +38,8 @@
     "tech_stack": "Tech Stack"
   },
   "Contact": {
-    "title": "Let's Connect",
-    "subtitle": "Have a project in mind or want to discuss modern web technologies?",
+    "title": "Get In Touch",
+    "subtitle": "Have a project in mind or want to discuss opportunities? I'd love to hear from you.",
     "name_label": "Name",
     "email_label": "Email",
     "message_label": "Message",
@@ -59,6 +60,6 @@
   },
   "Footer": {
     "rights": "All rights reserved.",
-    "built_with": "Built with Next.js, Tailwind & Framer Motion"
+    "built_with": "Built with Next.js, Tailwind CSS & Framer Motion"
   }
 }

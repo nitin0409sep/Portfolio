@@ -27,6 +27,7 @@ export interface Work {
   start: string;
   end: string;
   description: string;
+  highlights: string[];
 }
 
 export interface ProjectLink {
@@ -36,9 +37,17 @@ export interface ProjectLink {
 
 export interface Project {
   title: string;
+  subtitle: string;
   techStack: string[];
   description: string;
   link: ProjectLink;
+  links?: ProjectLink[];
+}
+
+export interface SkillCategory {
+  name: string;
+  icon: string;
+  skills: string[];
 }
 
 export interface ResumeData {
@@ -54,5 +63,6 @@ export interface ResumeData {
   education: Education[];
   work: Work[];
   skills: string[];
+  skillCategories: SkillCategory[];
   projects: Project[];
 }

@@ -1,129 +1,148 @@
-
 "use client";
 
-import { motion, Variants } from 'framer-motion';
-import { RocketIcon, CodeIcon, ServerIcon, DatabaseIcon, DownloadIcon } from 'lucide-react';
-import { useTranslations } from 'next-intl';
-import { RESUME_DATA } from '@/lib/constants';
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { DownloadIcon, ChevronDown, MapPin } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { RESUME_DATA } from "@/lib/constants";
 
-const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 30, filter: "blur(10px)" },
-    visible: { opacity: 1, y: 0, filter: "blur(0px)" },
-};
-
-const iconFloat: Variants = {
-    hidden: { opacity: 0, scale: 0 },
-    visible: (i: number) => ({
-        opacity: 1,
-        scale: 1,
-        transition: {
-            delay: 0.7 + i * 0.1,
-            type: "spring" as const,
-            stiffness: 200,
-            damping: 15,
-        },
-    }),
-};
+const roles = [
+    "Full-Stack Engineer",
+    "SaaS System Architect",
+    "React & Angular Developer",
+    "Node.js Backend Engineer",
+];
 
 export function Hero() {
-    const t = useTranslations('Hero');
+    const t = useTranslations("Hero");
+    const [roleIndex, setRoleIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setRoleIndex((prev) => (prev + 1) % roles.length);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
 
     return (
-        <section className="relative h-screen flex items-center justify-center overflow-hidden bg-grid-small-black/[0.2] dark:bg-grid-small-white/[0.2]">
-            {/* Background Gradient */}
-            <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+            {/* Subtle grid pattern */}
+            <div className="hero-grid-pattern" />
 
-            <div className="z-10 text-center space-y-8 px-4">
+            {/* Radial glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(700px,90vw)] h-[min(700px,90vw)] bg-primary/[0.04] rounded-full blur-3xl pointer-events-none" />
 
-                {/* Animated Badge */}
+            {/* Content */}
+            <div className="z-10 text-center space-y-6 px-4 max-w-4xl mx-auto">
+                {/* Status badge */}
                 <motion.div
-                    variants={fadeUp}
-                    initial="hidden"
-                    animate="visible"
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="inline-flex items-center space-x-2 bg-secondary/50 backdrop-blur-sm border border-border px-3 py-1 rounded-full text-sm font-mono text-muted-foreground"
+                    initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="inline-flex items-center gap-2 bg-secondary/50 backdrop-blur-sm border border-border/50 px-4 py-1.5 rounded-full text-sm text-muted-foreground"
                 >
                     <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
                     </span>
-                    <span>Open to remote opportunities</span>
+                    {t("status")}
                 </motion.div>
 
-                {/* Main Heading */}
-                <div className="space-y-4">
-                    <motion.h2
-                        variants={fadeUp}
-                        initial="hidden"
-                        animate="visible"
-                        transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-                        className="text-lg md:text-xl font-medium_ text-muted-foreground"
-                    >
-                        {t('greeting')}
-                    </motion.h2>
-                    <motion.h1
-                        initial={{ opacity: 0, y: 40, filter: "blur(12px)", scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
-                        transition={{ duration: 0.8, delay: 0.25, ease: [0.25, 0.4, 0.25, 1] as [number, number, number, number] }}
-                        className="text-5xl md:text-8xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/50"
-                    >
+                {/* Greeting */}
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="text-lg text-muted-foreground font-mono"
+                >
+                    {t("greeting")}
+                </motion.p>
+
+                {/* Name */}
+                <motion.h1
+                    initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    transition={{ duration: 0.7, delay: 0.3 }}
+                    className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-none"
+                >
+                    <span className="bg-clip-text text-transparent bg-gradient-to-b from-foreground via-foreground/90 to-foreground/50">
                         {RESUME_DATA.name}
-                    </motion.h1>
-                    <motion.p
-                        variants={fadeUp}
-                        initial="hidden"
-                        animate="visible"
-                        transition={{ duration: 0.6, delay: 0.45, ease: "easeOut" }}
-                        className="text-xl md:text-2xl text-muted-foreground font-light max-w-2xl mx-auto"
-                    >
-                        {t('role')}
-                    </motion.p>
+                    </span>
+                </motion.h1>
+
+                {/* Rotating Role */}
+                <div className="h-10 flex items-center justify-center overflow-hidden">
+                    <AnimatePresence mode="wait">
+                        <motion.p
+                            key={roleIndex}
+                            initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
+                            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                            exit={{ opacity: 0, y: -20, filter: "blur(4px)" }}
+                            transition={{ duration: 0.35 }}
+                            className="text-xl md:text-2xl text-primary font-medium"
+                        >
+                            {roles[roleIndex]}
+                        </motion.p>
+                    </AnimatePresence>
                 </div>
 
-                {/* Floating Tech Icons */}
-                <div className="flex justify-center gap-6 text-muted-foreground/40">
-                    {[CodeIcon, ServerIcon, DatabaseIcon, RocketIcon].map((Icon, i) => (
-                        <motion.div
-                            key={i}
-                            custom={i}
-                            variants={iconFloat}
-                            initial="hidden"
-                            animate="visible"
-                            whileHover={{ y: -4, scale: 1.2 }}
-                            transition={{ type: "spring", stiffness: 300 }}
-                        >
-                            <Icon className="w-8 h-8 hover:text-primary transition-colors duration-300" />
-                        </motion.div>
-                    ))}
-                </div>
+                {/* Location */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.6 }}
+                    className="flex items-center justify-center gap-1.5 text-sm text-muted-foreground"
+                >
+                    <MapPin className="w-3.5 h-3.5" />
+                    {RESUME_DATA.location}
+                </motion.div>
 
                 {/* CTA Buttons */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1, duration: 0.6, ease: "easeOut" }}
-                    className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8"
+                    transition={{ delay: 0.7, duration: 0.5 }}
+                    className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4"
                 >
                     <motion.a
                         href="#projects"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.98 }}
-                        className="px-8 py-3 rounded-md bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
+                        }}
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        className="px-8 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-all shadow-lg shadow-primary/20"
                     >
-                        {t('cta_primary')}
+                        {t("cta_primary")}
                     </motion.a>
                     <motion.a
                         href="/Nitin_Verma_Resume.pdf"
                         download="Nitin_Verma_Resume.pdf"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.98 }}
-                        className="inline-flex items-center gap-2 px-8 py-3 rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors"
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        className="inline-flex items-center gap-2 px-8 py-3 rounded-lg border border-border bg-background/50 backdrop-blur-sm hover:bg-accent hover:text-accent-foreground transition-all"
                     >
                         <DownloadIcon className="w-4 h-4" />
-                        {t('cta_secondary')}
+                        {t("cta_secondary")}
                     </motion.a>
                 </motion.div>
             </div>
+
+            {/* Scroll indicator */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.5 }}
+                className="absolute bottom-8 left-1/2 -translate-x-1/2"
+            >
+                <motion.div
+                    animate={{ y: [0, 8, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                >
+                    <ChevronDown className="w-5 h-5 text-muted-foreground/40" />
+                </motion.div>
+            </motion.div>
         </section>
     );
 }

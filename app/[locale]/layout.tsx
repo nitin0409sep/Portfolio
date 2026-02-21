@@ -8,6 +8,7 @@ import { LenisScroll } from '@/components/theme/LenisScroll';
 import { ThemeProvider } from '@/components/theme/ThemeProvider';
 import { SettingsPanel } from '@/components/theme/SettingsPanel';
 import { LandingIntro } from '@/components/landing/LandingIntro';
+import { Navbar } from '@/components/sections/Navbar';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 const jetbrainsMono = JetBrains_Mono({
@@ -16,8 +17,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-    title: 'Nitin Verma | Senior Full-Stack SDE',
-    description: 'Portfolio of Nitin Verma, a Senior Full-Stack Software Development Engineer specializing in Scalable Systems, Next.js, and Cloud Architecture.',
+    title: 'Nitin Verma | Full-Stack Engineer',
+    description: 'Product-oriented Full Stack Engineer with 2.5+ years of experience designing and delivering scalable SaaS systems using TypeScript, Angular, React, and Node.js.',
 };
 
 export default async function RootLayout({
@@ -39,7 +40,8 @@ export default async function RootLayout({
                     <ThemeProvider />
                     <LandingIntro />
                     <LenisScroll>
-                        <main className="flex min-h-screen flex-col items-center justify-between">
+                        <Navbar />
+                        <main className="flex min-h-screen flex-col">
                             {children}
                         </main>
                         <SettingsPanel />
