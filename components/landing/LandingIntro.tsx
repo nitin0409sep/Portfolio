@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useMemo, useCallback } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Html, Line } from "@react-three/drei";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Globe } from "lucide-react";
@@ -42,12 +42,7 @@ function generateGlobePoints(count: number, radius: number) {
 }
 
 // Generate arc points between two positions on the sphere
-function generateArcPoints(
-    start: THREE.Vector3,
-    end: THREE.Vector3,
-    radius: number,
-    segments: number = 50
-) {
+function generateArcPoints(start: THREE.Vector3, end: THREE.Vector3, radius: number, segments: number = 50) {
     const points: THREE.Vector3[] = [];
     for (let i = 0; i <= segments; i++) {
         const t = i / segments;
@@ -87,69 +82,39 @@ function DottedGlobe() {
         <group ref={globeRef}>
             {/* Dotted sphere surface */}
             <points geometry={geometry}>
-                <pointsMaterial
-                    size={0.035}
-                    color="#818cf8"
-                    transparent
-                    opacity={0.7}
-                    sizeAttenuation
-                />
+                <pointsMaterial size={0.035} color="#818cf8" transparent opacity={0.7} sizeAttenuation />
             </points>
 
             {/* Wireframe sphere outline */}
             <mesh>
                 <sphereGeometry args={[2, 48, 48]} />
-                <meshBasicMaterial
-                    color="#6366f1"
-                    wireframe
-                    transparent
-                    opacity={0.1}
-                />
+                <meshBasicMaterial color="#6366f1" wireframe transparent opacity={0.1} />
             </mesh>
 
             {/* Inner glow sphere */}
             <mesh>
                 <sphereGeometry args={[1.95, 32, 32]} />
-                <meshBasicMaterial
-                    color="#1e1b4b"
-                    transparent
-                    opacity={0.4}
-                />
+                <meshBasicMaterial color="#1e1b4b" transparent opacity={0.4} />
             </mesh>
 
             {/* Outer glow sphere */}
             <mesh>
                 <sphereGeometry args={[2.08, 32, 32]} />
-                <meshBasicMaterial
-                    color="#6366f1"
-                    transparent
-                    opacity={0.03}
-                    side={THREE.BackSide}
-                />
+                <meshBasicMaterial color="#6366f1" transparent opacity={0.03} side={THREE.BackSide} />
             </mesh>
         </group>
     );
 }
 
 // Location pin on the globe
-function LocationPin({
-    lat,
-    lng,
-    globeRotation,
-}: {
-    lat: number;
-    lng: number;
-    globeRotation: React.MutableRefObject<number>;
-}) {
+function LocationPin({ lat, lng, globeRotation }: { lat: number; lng: number; globeRotation: React.MutableRefObject<number> }) {
     const pinRef = useRef<THREE.Group>(null);
     const position = useMemo(() => latLngToVector3(lat, lng, 2.05), [lat, lng]);
 
     useFrame((_, delta) => {
         if (pinRef.current) {
             globeRotation.current += delta * 0.15;
-            const rotatedPos = position
-                .clone()
-                .applyAxisAngle(new THREE.Vector3(0, 1, 0), globeRotation.current);
+            const rotatedPos = position.clone().applyAxisAngle(new THREE.Vector3(0, 1, 0), globeRotation.current);
             pinRef.current.position.copy(rotatedPos);
             pinRef.current.lookAt(0, 0, 0);
         }
@@ -192,17 +157,38 @@ function GlobeArcs() {
     return (
         <group ref={arcsRef}>
             {arcs.map((arcPoints, i) => (
-                <Line
-                    key={i}
-                    points={arcPoints}
-                    color="#818cf8"
-                    transparent
-                    opacity={0.4}
-                    lineWidth={1.5}
-                />
+                <Line key={i} points={arcPoints} color="#818cf8" transparent opacity={0.4} lineWidth={1.5} />
             ))}
         </group>
     );
+}
+
+// Fixed camera component to prevent auto-adjustment
+function FixedCamera() {
+    const { camera } = useThree();
+    
+    useFrame(() => {
+        // Constantly lock camera position to prevent any auto-adjustment
+        if (camera.position.z !== 5) {
+            camera.position.set(0, 0, 5);
+        }
+        // Only set FOV if it's a PerspectiveCamera
+        if (camera instanceof THREE.PerspectiveCamera && camera.fov !== 50) {
+            camera.fov = 50;
+            camera.updateProjectionMatrix();
+        }
+    });
+    
+    useEffect(() => {
+        // Set initial camera position
+        camera.position.set(0, 0, 5);
+        if (camera instanceof THREE.PerspectiveCamera) {
+            camera.fov = 50;
+            camera.updateProjectionMatrix();
+        }
+    }, [camera]);
+    
+    return null;
 }
 
 // Main globe scene
@@ -211,18 +197,13 @@ function GlobeScene({ userLocation }: { userLocation: { lat: number; lng: number
 
     return (
         <>
+            <FixedCamera />
             <ambientLight intensity={0.6} />
             <pointLight position={[10, 10, 10]} intensity={1.2} />
             <pointLight position={[-10, -5, -10]} intensity={0.3} color="#818cf8" />
             <DottedGlobe />
             <GlobeArcs />
-            {userLocation && (
-                <LocationPin
-                    lat={userLocation.lat}
-                    lng={userLocation.lng}
-                    globeRotation={globeRotation}
-                />
-            )}
+            {userLocation && <LocationPin lat={userLocation.lat} lng={userLocation.lng} globeRotation={globeRotation} />}
         </>
     );
 }
@@ -233,6 +214,7 @@ export function LandingIntro() {
     const [mounted, setMounted] = useState(false);
     const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
     const [selectedLang, setSelectedLang] = useState<string | null>(null);
+    const globeContainerRef = useRef<HTMLDivElement>(null);
     const locale = useLocale();
     const router = useRouter();
     const t = useTranslations("Landing");
@@ -281,13 +263,16 @@ export function LandingIntro() {
         }
     }, []);
 
-    const handleLanguageSelect = useCallback((code: string) => {
-        setSelectedLang(code);
-        document.cookie = `NEXT_LOCALE=${code};path=/;max-age=31536000`;
-        if (code !== locale) {
-            router.refresh();
-        }
-    }, [locale, router]);
+    const handleLanguageSelect = useCallback(
+        (code: string) => {
+            setSelectedLang(code);
+            document.cookie = `NEXT_LOCALE=${code};path=/;max-age=31536000`;
+            if (code !== locale) {
+                router.refresh();
+            }
+        },
+        [locale, router]
+    );
 
     const handleStart = useCallback(() => {
         setExiting(true);
@@ -325,62 +310,101 @@ export function LandingIntro() {
                         ))}
                     </div>
 
-                    {/* Title */}
-                    <motion.div
-                        initial={{ opacity: 0, y: -30 }}
-                        animate={{ opacity: exiting ? 0 : 1, y: exiting ? -30 : 0 }}
-                        transition={{ duration: 0.6, delay: 0.3 }}
-                        className="text-center shrink-0 z-10"
-                    >
-                        <h1 className="text-2xl md:text-4xl font-bold text-white tracking-tight pt-2">
-                            {t("title")}
-                        </h1>
-                        <p className="text-indigo-300/70 text-sm md:text-base mt-2 pb-2">
-                            {t("subtitle")}
-                        </p>
-                    </motion.div>
-
-                    {/* Globe - centered between title and controls */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{
-                            opacity: exiting ? 0 : 1,
-                            scale: exiting ? 1.5 : 1,
+                    {/* Content wrapper - 70% of viewport */}
+                    <div
+                        className="flex flex-col items-center justify-center w-full h-full z-10"
+                        style={{
+                            maxWidth: "70vw",
+                            maxHeight: "70vh",
+                            gap: "clamp(0.5rem, 2vh, 1.5rem)",
                         }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="flex-1 w-full min-h-0 flex items-center justify-center z-10"
                     >
-                        <Canvas
-                            camera={{ position: [0, 0, 4.5], fov: 50 }}
-                            style={{ background: "transparent", width: "100%", height: "100%" }}
+                        {/* Title */}
+                        <motion.div
+                            initial={{ opacity: 0, y: -30 }}
+                            animate={{ opacity: exiting ? 0 : 1, y: exiting ? -30 : 0 }}
+                            transition={{ duration: 0.6, delay: 0.3 }}
+                            className="text-center shrink-0"
                         >
-                            <GlobeScene userLocation={userLocation} />
-                        </Canvas>
-                    </motion.div>
+                            <h1 className="text-xl md:text-3xl font-bold text-white tracking-tight pt-1">{t("title")}</h1>
+                            <p className="text-indigo-300/70 text-xs md:text-sm mt-1 pb-1">{t("subtitle")}</p>
+                        </motion.div>
 
-                    {/* Bottom controls */}
-                    <div className="flex flex-col items-center shrink-0 z-10 pb-6 mt-2">
+                        {/* Globe - centered between title and controls */}
+                        <motion.div
+                            ref={globeContainerRef}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{
+                                opacity: exiting ? 0 : 1,
+                                scale: exiting ? 1.5 : 1,
+                            }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            className="flex-1 w-full min-h-0"
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                position: "relative",
+                                maxHeight: "45vh",
+                            }}
+                        >
+                            <div 
+                                className="w-full h-full"
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center"
+                                }}
+                            >
+                                <Canvas 
+                                    camera={{ position: [0, 0, 5], fov: 50 }} 
+                                    gl={{ antialias: true, alpha: true }}
+                                    dpr={[1, 2]}
+                                    style={{ 
+                                        background: "transparent", 
+                                        width: "100%", 
+                                        height: "100%",
+                                        pointerEvents: "none"
+                                    }}
+                                    onCreated={(state) => {
+                                        // Lock camera position - prevent auto-adjustment
+                                        const { camera, gl } = state;
+                                        camera.position.set(0, 0, 5);
+                                        if (camera instanceof THREE.PerspectiveCamera) {
+                                            camera.fov = 50;
+                                            camera.updateProjectionMatrix();
+                                        }
+                                        // Disable pointer events to prevent interactions
+                                        gl.domElement.style.pointerEvents = "none";
+                                    }}
+                                >
+                                    <GlobeScene userLocation={userLocation} />
+                                </Canvas>
+                            </div>
+                        </motion.div>
+
+                        {/* Bottom controls */}
+                        <div className="flex flex-col items-center shrink-0 pb-4 mt-0">
                         {/* Language Selection */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: exiting ? 0 : 1, y: exiting ? 20 : 0 }}
                             transition={{ duration: 0.6, delay: 0.6 }}
-                            className="flex flex-col items-center gap-3"
+                            className="flex flex-col items-center gap-2"
                         >
-                            <p className="text-indigo-300/60 text-sm flex items-center gap-2">
-                                <Globe className="w-4 h-4" />
+                            <p className="text-indigo-300/60 text-xs md:text-sm flex items-center gap-2">
+                                <Globe className="w-3.5 h-3.5" />
                                 {t("choose_language")}
                             </p>
-                            <div className="flex gap-3">
+                            <div className="flex gap-2">
                                 {languages.map((lang) => (
                                     <button
                                         key={lang.code}
                                         onClick={() => handleLanguageSelect(lang.code)}
-                                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 border ${
-                                            (selectedLang || locale) === lang.code
-                                                ? "bg-indigo-600 border-indigo-500 text-white shadow-lg shadow-indigo-500/25"
-                                                : "bg-white/5 border-white/10 text-white/70 hover:bg-white/10 hover:border-white/20"
-                                        }`}
+                                        className={`px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium transition-all duration-300 border ${(selectedLang || locale) === lang.code
+                                            ? "bg-indigo-600 border-indigo-500 text-white shadow-lg shadow-indigo-500/25"
+                                            : "bg-white/5 border-white/10 text-white/70 hover:bg-white/10 hover:border-white/20"
+                                            }`}
                                     >
                                         <span className="mr-2">{lang.flag}</span>
                                         {lang.label}
@@ -389,17 +413,18 @@ export function LandingIntro() {
                             </div>
                         </motion.div>
 
-                        {/* Start Button */}
-                        <motion.button
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: exiting ? 0 : 1, y: exiting ? 20 : 0 }}
-                            transition={{ duration: 0.6, delay: 0.9 }}
-                            onClick={handleStart}
-                            className="mt-4 group relative px-8 py-3 rounded-full bg-indigo-600 text-white font-semibold text-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/30 hover:scale-105"
-                        >
-                            <span className="relative z-10">{t("start")}</span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        </motion.button>
+                            {/* Start Button */}
+                            <motion.button
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: exiting ? 0 : 1, y: exiting ? 20 : 0 }}
+                                transition={{ duration: 0.6, delay: 0.9 }}
+                                onClick={handleStart}
+                                className="mt-3 group relative px-6 py-2.5 rounded-full bg-indigo-600 text-white font-semibold text-base overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/30 hover:scale-105"
+                            >
+                                <span className="relative z-10">{t("start")}</span>
+                                <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            </motion.button>
+                        </div>
                     </div>
 
                     {/* Subtle bottom gradient */}
