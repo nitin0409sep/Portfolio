@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/immutability */
+/* eslint-disable react-hooks/purity */
 "use client";
 
 import { useState, useEffect, useRef, useMemo, useCallback } from "react";
@@ -12,7 +14,7 @@ import * as THREE from "three";
 const languages = [
     { code: "en", label: "English", flag: "🇺🇸" },
     { code: "hi", label: "हिन्दी", flag: "🇮🇳" },
-    { code: "es", label: "Español", flag: "🇪🇸" },
+    // { code: "es", label: "Español", flag: "🇪🇸" },
 ];
 
 // Convert lat/lng to 3D position on sphere

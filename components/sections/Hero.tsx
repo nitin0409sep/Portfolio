@@ -7,11 +7,11 @@ import { useTranslations } from "next-intl";
 import { RESUME_DATA } from "@/lib/constants";
 
 const roles = [
-    "Full-Stack Engineer",
-    "React & Angular Developer",
+    "Full-Stack & AI Engineer",
+    "React / Next.js Developer",
     "Node.js Backend Engineer",
+    "LLM & RAG Application Developer",
 ];
-
 export function Hero() {
     const t = useTranslations("Hero");
     const [roleIndex, setRoleIndex] = useState(0);
@@ -19,7 +19,7 @@ export function Hero() {
     useEffect(() => {
         const interval = setInterval(() => {
             setRoleIndex((prev) => (prev + 1) % roles.length);
-        }, 3000);
+        }, 3500);
         return () => clearInterval(interval);
     }, []);
 

@@ -6,7 +6,7 @@ export const RESUME_DATA: ResumeData = {
     location: "Noida, India",
     locationLink: "https://www.google.com/maps/place/Noida",
     about:
-        "Product-oriented Full Stack Engineer with 2.5+ years of experience designing and delivering scalable SaaS systems using TypeScript, Angular, React, and Node.js. Experienced in building modular frontend architectures, secure RESTful APIs, role-based access control systems, and real-time event-driven workflows.",
+        "Product-oriented Full Stack Engineer with 3 years of experience designing and delivering scalable SaaS systems using TypeScript, Angular, React, and Node.js. Experienced in building modular frontend architectures, secure RESTful APIs, role-based access control systems, and real-time event-driven workflows.",
     summary:
         "Strong focus on clean architecture, performance optimization, and production-grade engineering standards.",
     avatarUrl: "/nitin.jpeg",
@@ -83,7 +83,12 @@ export const RESUME_DATA: ResumeData = {
         {
             name: "Languages",
             icon: "code",
-            skills: ["TypeScript", "JavaScript"],
+            skills: ["TypeScript", "JavaScript", "Go"],
+        },
+        {
+            name: "AI / LLM",
+            icon: "layout",
+            skills: ["Generative AI", "Prompt Engineering", "LLM API Integration", "LangChain", "Retrieval-Augmented Generation (RAG)", "Vector Embeddings", "Semantic Search"],
         },
         {
             name: "Frontend",
@@ -105,7 +110,7 @@ export const RESUME_DATA: ResumeData = {
         {
             name: "Backend",
             icon: "server",
-            skills: ["Node.js", "Express.js", "NestJS", "REST APIs", "WebSockets"],
+            skills: ["Node.js", "Express.js", "NestJS", "REST APIs", "WebSockets", "Redis"],
         },
         {
             name: "Databases",
@@ -115,15 +120,55 @@ export const RESUME_DATA: ResumeData = {
         {
             name: "Cloud & DevOps",
             icon: "cloud",
-            skills: ["Docker", "AWS", "GCP", "Firebase", "Vercel"],
+            skills: ["Docker", "AWS", "Firebase", "Vercel"],
         },
         {
             name: "Auth & Tooling",
             icon: "shield",
             skills: ["JWT", "RBAC", "Zod", "Joi", "Drizzle ORM", "Sequelize", "Git"],
         },
+        {
+            name: "Developer Tools",
+            icon: "wrench",
+            skills: ["Git", "GitHub", "Docker", "Postman"],
+        },
+        {
+            name: "AI Tools",
+            icon: "brain",
+            skills: ["Claude", "Cursor", "Gemini", "Antigravity"],
+        },
     ],
     projects: [
+        {
+            title: "AI Chat Web App",
+            subtitle: "AI-Powered Conversational Chat Platform",
+            techStack: [
+                "Next.js", "TypeScript", "PostgreSQL", "Redis", "Drizzle ORM", "Groq API", "Zustand", "TanStack Query", "Docker", "Tailwind CSS",
+            ],
+            description: "Full-stack AI chat application built with Next.js and PostgreSQL, featuring JWT-based authentication with secure httpOnly cookies. Integrates Groq API (Llama 3.3-70B) for intelligent responses, with a two-tier memory system using Redis for short - term context and automatic summarization for long - term recall.Supports multi- chat management with persistent message history and soft- delete architecture.",
+            link: {
+                label: "GitHub",
+                href: "https://github.com/nitin0409sep/ai-chat-app",
+            },
+        },
+        {
+            title: "Company Chat Bot",
+            subtitle: "AI-Powered Company Policy Q&A System",
+            techStack: [
+                "Node.js",
+                "LangChain",
+                "Pinecone",
+                "HuggingFace",
+                "Groq",
+                "pdf-parse",
+                "RAG",
+            ],
+            description: "Node.js-based RAG (Retrieval-Augmented Generation) chatbot that answers employee questions using company policy documents. Loads PDFs, splits them into chunks, generates vector embeddings via HuggingFace, stores them in Pinecone, and uses Groq's Llama 3.3 70B model to provide context-aware answers through an interactive CLI",
+            link: {
+                label: "GitHub",
+                href: "https://github.com/nitin0409sep/rag-chat-bot",
+            },
+        },
         {
             title: "Cab Buddy",
             subtitle: "Real-Time Ride Matching System",
@@ -139,7 +184,7 @@ export const RESUME_DATA: ResumeData = {
                 "MERN-based ride booking system supporting User and Captain roles with separate authentication flows. Features real-time ride updates via Socket.io, Google Maps integration for route visualization and fare estimation, and structured MongoDB schema models for ride lifecycle management.",
             link: {
                 label: "GitHub",
-                href: "#",
+                href: "https://github.com/nitin0409sep/Cab-Buddy",
             },
         },
         {
@@ -160,8 +205,8 @@ export const RESUME_DATA: ResumeData = {
                 href: "#",
             },
             links: [
-                { label: "Frontend", href: "#" },
-                { label: "Backend", href: "#" },
+                { label: "Frontend", href: "https://github.com/nitin0409sep/Blog-Website-Frontend" },
+                { label: "Backend", href: "https://github.com/nitin0409sep/Blog-Website-Backend" },
             ],
         },
         {
@@ -178,7 +223,7 @@ export const RESUME_DATA: ResumeData = {
                 "Angular-based administrative dashboard with backend APIs using Node.js. Features authentication flows, structured database models, component-driven UI architecture, and maintainable backend services.",
             link: {
                 label: "GitHub",
-                href: "#",
+                href: "https://github.com/nitin0409sep/Book-Nexus",
             },
         },
     ],

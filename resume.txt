@@ -2,7 +2,7 @@
                          (+91) 9415056824 nitin5september@gmail.com LinkedIn Github
 
 P ROFESSIONAL S UMMARY
-Software Development Engineer with 2.5+years of experience in full stack development, proficient in building
+Software Development Engineer with 3 years of experience in full stack development, proficient in building
 scalable and responsive web applications. Skilled in both front-end and back-end technologies including React,
 Angular, Node.js, and databases like PostgreSQL and MongoDB. Successfully contributed to 5+ industry-grade
 projects. Committed to writing clean, modular code and continuously improving system efficiency and reliability.

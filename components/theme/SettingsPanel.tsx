@@ -13,7 +13,7 @@ const colors = ['blue', 'green', 'violet', 'orange'];
 const languages = [
     { code: 'en', label: 'English' },
     { code: 'hi', label: 'Hindi' },
-    { code: 'es', label: 'Spanish' }
+    // { code: 'es', label: 'Spanish' }
 ];
 
 export function SettingsPanel() {

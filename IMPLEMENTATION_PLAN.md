@@ -58,7 +58,7 @@
 -   **Data Source:** Resume Header.
 
 ### B. About Me (`components/sections/about.tsx`)
--   **Content:** "2.5+ Years Exp", "Scalable Systems", "Clean Code".
+-   **Content:** "3 Years Exp", "Scalable Systems", "Clean Code".
 -   **Visual:** Split layout. Text on left, "Stats" or "Profile Code Snippet" on right.
 -   **Data Source:** Professional Summary.
 

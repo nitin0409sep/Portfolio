@@ -18,7 +18,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
     title: 'Nitin Verma | Full-Stack Engineer',
-    description: 'Product-oriented Full Stack Engineer with 2.5+ years of experience designing and delivering scalable SaaS systems using TypeScript, Angular, React, and Node.js.',
+    description: 'Product-oriented Full Stack Engineer with almost 3 years of experience designing and delivering scalable SaaS systems using TypeScript, Angular, React, and Node.js.',
 };
 
 export default async function RootLayout({
