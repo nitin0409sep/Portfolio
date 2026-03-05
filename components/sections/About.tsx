@@ -28,7 +28,7 @@ export function About() {
     const t = useTranslations("About");
 
     const stats = [
-        { value: "3+", label: t("stats.experience") },
+        { value: "3", label: t("stats.experience") },
         { value: "5+", label: t("stats.projects") },
         { value: "500+", label: t("stats.contributions") },
     ];
