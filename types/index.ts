@@ -37,11 +37,15 @@ export interface ProjectLink {
 
 export interface Project {
   title: string;
+  slug: string;
   subtitle: string;
   techStack: string[];
   description: string;
   link: ProjectLink;
   links?: ProjectLink[];
+  videoUrl?: string;
+  details?: string;
+  highlights?: string[];
 }
 
 export interface SkillCategory {

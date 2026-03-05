@@ -57,6 +57,15 @@
     "choose_language": "Elige tu idioma",
     "start": "Comenzar a Explorar"
   },
+  "ProjectDetail": {
+    "not_found": "Proyecto No Encontrado",
+    "go_back": "Volver",
+    "video_coming_soon": "Video proximamente",
+    "about_project": "Sobre Este Proyecto",
+    "what_we_built": "Lo Que Construimos",
+    "tech_stack": "Stack Tecnologico",
+    "source_code": "Codigo Fuente"
+  },
   "Footer": {
     "rights": "Todos los derechos reservados.",
     "built_with": "Hecho con Next.js, Tailwind y Framer Motion"

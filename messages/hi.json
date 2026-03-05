@@ -57,6 +57,15 @@
     "choose_language": "अपनी भाषा चुनें",
     "start": "शुरू करें"
   },
+  "ProjectDetail": {
+    "not_found": "प्रोजेक्ट नहीं मिला",
+    "go_back": "वापस जाएं",
+    "video_coming_soon": "वीडियो जल्द आ रहा है",
+    "about_project": "इस प्रोजेक्ट के बारे में",
+    "what_we_built": "हमने क्या बनाया",
+    "tech_stack": "टेक स्टैक",
+    "source_code": "सोर्स कोड"
+  },
   "Footer": {
     "rights": "सर्वाधिकार सुरक्षित।",
     "built_with": "Next.js, Tailwind और Framer Motion से बनाया गया"

@@ -141,6 +141,7 @@ export const RESUME_DATA: ResumeData = {
     projects: [
         {
             title: "AI Chat Web App",
+            slug: "ai-chat-web-app",
             subtitle: "AI-Powered Conversational Chat Platform",
             techStack: [
                 "Next.js", "TypeScript", "PostgreSQL", "Redis", "Drizzle ORM", "Groq API", "Zustand", "TanStack Query", "Docker", "Tailwind CSS",
@@ -150,9 +151,20 @@ export const RESUME_DATA: ResumeData = {
                 label: "GitHub",
                 href: "https://github.com/nitin0409sep/ai-chat-app",
             },
+            videoUrl: "",
+            details: "A full-stack AI chat application that provides an intelligent conversational experience. Built with Next.js for the frontend and PostgreSQL for persistent storage, the app features secure JWT-based authentication using httpOnly cookies. It integrates the Groq API with the Llama 3.3-70B model for generating intelligent, context-aware responses. The app implements a two-tier memory system - Redis handles short-term conversational context while automatic summarization enables long-term recall across sessions. Users can manage multiple chat conversations with persistent message history and a soft-delete architecture for data safety.",
+            highlights: [
+                "Implemented JWT-based authentication with secure httpOnly cookie storage",
+                "Integrated Groq API (Llama 3.3-70B) for AI-powered conversational responses",
+                "Built a two-tier memory system using Redis for short-term context and automatic summarization for long-term recall",
+                "Designed multi-chat management with persistent message history",
+                "Implemented soft-delete architecture for safe data management",
+                "Containerized the application using Docker for consistent deployment",
+            ],
         },
         {
             title: "Company Chat Bot",
+            slug: "company-chat-bot",
             subtitle: "AI-Powered Company Policy Q&A System",
             techStack: [
                 "Node.js",
@@ -168,9 +180,20 @@ export const RESUME_DATA: ResumeData = {
                 label: "GitHub",
                 href: "https://github.com/nitin0409sep/rag-chat-bot",
             },
+            videoUrl: "",
+            details: "A Node.js-based RAG (Retrieval-Augmented Generation) chatbot designed to answer employee questions using company policy documents. The system loads PDF documents, splits them into manageable chunks, and generates vector embeddings using HuggingFace models. These embeddings are stored in Pinecone for efficient similarity search. When a user asks a question, the system retrieves the most relevant document chunks and feeds them as context to Groq's Llama 3.3 70B model, which generates accurate, context-aware answers through an interactive CLI interface.",
+            highlights: [
+                "Built a complete RAG pipeline from document ingestion to answer generation",
+                "Implemented PDF parsing and intelligent text chunking for optimal retrieval",
+                "Generated vector embeddings using HuggingFace transformer models",
+                "Integrated Pinecone vector database for efficient similarity search",
+                "Used Groq's Llama 3.3 70B model for context-aware answer generation",
+                "Created an interactive CLI interface for real-time Q&A",
+            ],
         },
         {
             title: "Cab Buddy",
+            slug: "cab-buddy",
             subtitle: "Real-Time Ride Matching System",
             techStack: [
                 "React",
@@ -186,9 +209,20 @@ export const RESUME_DATA: ResumeData = {
                 label: "GitHub",
                 href: "https://github.com/nitin0409sep/Cab-Buddy",
             },
+            videoUrl: "",
+            details: "A MERN-based ride booking system that supports both User and Captain roles with separate authentication flows. The platform features real-time ride updates powered by Socket.io, enabling instant communication between riders and drivers. Google Maps API integration provides route visualization, distance calculation, and fare estimation. The backend uses structured MongoDB schema models to manage the complete ride lifecycle from booking to completion.",
+            highlights: [
+                "Built separate authentication flows for User and Captain roles",
+                "Implemented real-time ride updates using Socket.io WebSockets",
+                "Integrated Google Maps API for route visualization and fare estimation",
+                "Designed structured MongoDB schemas for ride lifecycle management",
+                "Created a responsive React frontend with role-based dashboards",
+                "Built RESTful APIs with Express.js for ride CRUD operations",
+            ],
         },
         {
             title: "Blogify",
+            slug: "blogify",
             subtitle: "Role-Based Content Platform",
             techStack: [
                 "React",
@@ -208,9 +242,20 @@ export const RESUME_DATA: ResumeData = {
                 { label: "Frontend", href: "https://github.com/nitin0409sep/Blog-Website-Frontend" },
                 { label: "Backend", href: "https://github.com/nitin0409sep/Blog-Website-Backend" },
             ],
+            videoUrl: "",
+            details: "A full-stack blogging platform with secure JWT authentication and permission-driven content access. The frontend is built with React and Redux Toolkit for state management, providing a smooth user experience for creating, editing, and reading blog posts. The backend features a layered architecture with proper validation at each level. PostgreSQL serves as the database, containerized with Docker for consistent environments. Role-based content management ensures users can only access and modify content based on their permissions.",
+            highlights: [
+                "Implemented secure JWT authentication with role-based access control",
+                "Built frontend with React and Redux Toolkit for centralized state management",
+                "Designed layered backend architecture with validation middleware",
+                "Containerized PostgreSQL database using Docker",
+                "Created permission-driven content access system",
+                "Separated frontend and backend into independent repositories",
+            ],
         },
         {
             title: "Book Nexus",
+            slug: "book-nexus",
             subtitle: "Library Workflow Management",
             techStack: [
                 "Angular",
@@ -225,6 +270,16 @@ export const RESUME_DATA: ResumeData = {
                 label: "GitHub",
                 href: "https://github.com/nitin0409sep/Book-Nexus",
             },
+            videoUrl: "",
+            details: "An Angular-based administrative dashboard for library workflow management, backed by Node.js APIs. The application features comprehensive authentication flows, structured MongoDB database models for books, users, and transactions, and a component-driven UI architecture built with Angular and Bootstrap. The backend services are designed for maintainability with clean separation of concerns.",
+            highlights: [
+                "Built a component-driven UI with Angular and Bootstrap",
+                "Implemented authentication flows for admin and user roles",
+                "Designed structured MongoDB models for library data management",
+                "Created RESTful APIs with Express.js for CRUD operations",
+                "Implemented search and filter functionality for book catalog",
+                "Built maintainable backend services with clean architecture",
+            ],
         },
     ],
 } as const;

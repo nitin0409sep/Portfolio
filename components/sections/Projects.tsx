@@ -6,7 +6,9 @@ import { RESUME_DATA } from "@/lib/constants";
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { GithubIcon, ExternalLinkIcon } from "lucide-react";
+import { GithubIcon, ExternalLinkIcon, ArrowRightIcon } from "lucide-react";
+import Link from "next/link";
+import { useLocale } from "next-intl";
 
 const cardVariant: Variants = {
     hidden: { opacity: 0, y: 50, filter: "blur(6px)" },
@@ -24,6 +26,7 @@ const cardVariant: Variants = {
 
 export function Projects() {
     const t = useTranslations("Projects");
+    const locale = useLocale();
 
     return (
         <section id="projects" className="py-24 bg-muted/30">
@@ -86,7 +89,18 @@ export function Projects() {
                                     </div>
                                 </CardContent>
 
-                                <CardFooter className="pt-4 border-t border-border/50">
+                                <CardFooter className="pt-4 border-t border-border/50 flex-col gap-2">
+                                    <Button
+                                        variant="default"
+                                        size="sm"
+                                        className="w-full gap-2 group/btn"
+                                        asChild
+                                    >
+                                        <Link href={`/${locale}/projects/${project.slug}`}>
+                                            {t("view_project")}
+                                            <ArrowRightIcon className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                                        </Link>
+                                    </Button>
                                     {project.links && project.links.length > 1 ? (
                                         <div className="flex gap-2 w-full">
                                             {project.links.map((link) => (

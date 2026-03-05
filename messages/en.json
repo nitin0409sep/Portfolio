@@ -58,6 +58,15 @@
     "choose_language": "Choose your language",
     "start": "Start Exploring"
   },
+  "ProjectDetail": {
+    "not_found": "Project Not Found",
+    "go_back": "Go Back",
+    "video_coming_soon": "Video coming soon",
+    "about_project": "About This Project",
+    "what_we_built": "What We Built",
+    "tech_stack": "Tech Stack",
+    "source_code": "Source Code"
+  },
   "Footer": {
     "rights": "All rights reserved.",
     "built_with": "Built with Next.js, Tailwind CSS & Framer Motion"
