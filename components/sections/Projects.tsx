@@ -1,14 +1,13 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
-import { useTranslations } from "next-intl";
-import { RESUME_DATA } from "@/lib/constants";
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { GithubIcon, ExternalLinkIcon, ArrowRightIcon } from "lucide-react";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { RESUME_DATA } from "@/lib/constants";
+import { motion, Variants } from "framer-motion";
+import { ArrowRightIcon, ExternalLinkIcon, GithubIcon } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
-import { useLocale } from "next-intl";
 
 const cardVariant: Variants = {
     hidden: { opacity: 0, y: 50, filter: "blur(6px)" },
@@ -116,7 +115,11 @@ export function Projects() {
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                     >
-                                                        <GithubIcon className="w-3.5 h-3.5 group-hover/btn:text-primary transition-colors" />
+                                                        {link.label === "GitHub" ? (
+                                                            <GithubIcon className="w-3.5 h-3.5 group-hover/btn:text-primary transition-colors" />
+                                                        ) : (
+                                                            <ExternalLinkIcon className="w-3.5 h-3.5 group-hover/btn:text-primary transition-colors" />
+                                                        )}
                                                         {link.label}
                                                     </a>
                                                 </Button>

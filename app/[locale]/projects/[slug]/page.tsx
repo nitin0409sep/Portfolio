@@ -207,7 +207,11 @@ export default function ProjectDetailPage() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <GithubIcon className="w-4 h-4" />
+                                    {link.label === "GitHub" ? (
+                                        <GithubIcon className="w-4 h-4" />
+                                    ) : (
+                                        <ExternalLinkIcon className="w-4 h-4" />
+                                    )}
                                     {link.label}
                                 </a>
                             </Button>

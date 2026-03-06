@@ -88,7 +88,17 @@ export const RESUME_DATA: ResumeData = {
         {
             name: "AI / LLM",
             icon: "layout",
-            skills: ["Generative AI", "Prompt Engineering", "LLM API Integration", "LangChain", "Retrieval-Augmented Generation (RAG)", "Vector Embeddings", "Semantic Search"],
+            skills: [
+                "Generative AI",
+                "Prompt Engineering",
+                "LLM API Integration",
+                "AI Agents",
+                "LangChain",
+                "Retrieval-Augmented Generation (RAG)",
+                "Vector Embeddings",
+                "Semantic Search",
+                "Vercel AI SDK",
+            ],
         },
         {
             name: "Frontend",
@@ -115,7 +125,7 @@ export const RESUME_DATA: ResumeData = {
         {
             name: "Databases",
             icon: "database",
-            skills: ["PostgreSQL", "MongoDB"],
+            skills: ["PostgreSQL", "MongoDB", "Turso (LibSQL)"],
         },
         {
             name: "Cloud & DevOps",
@@ -139,6 +149,33 @@ export const RESUME_DATA: ResumeData = {
         },
     ],
     projects: [
+        {
+            title: "SQL Agent",
+            slug: "sql-agent",
+            subtitle: "Natural Language to SQL Query Agent",
+            techStack: [
+                "Next.js", "TypeScript", "Turso (LibSQL)", "Drizzle ORM", "Groq API", "AI SDK", "Tailwind CSS", "Zod",
+            ],
+            description: "An AI-powered SQL agent built with Next.js that translates natural language questions into SQL queries. Uses Groq API (Llama 3.3-70B) with a tool-calling architecture where the AI autonomously fetches database schema and executes read-only SQL queries. Features real-time streaming responses, query sanitization to prevent destructive operations, and session-based message persistence.",
+            link: {
+                label: "GitHub",
+                href: "https://github.com/nitin0409sep/sql-agent",
+            },
+            links: [
+                { label: "GitHub", href: "https://github.com/nitin0409sep/sql-agent" },
+                { label: "Live Demo", href: "https://sql-agent-beta-eight.vercel.app/" },
+            ],
+            videoUrl: "",
+            details: "A conversational AI agent that lets users query databases using plain English. Built with Next.js and the Vercel AI SDK, the agent uses Groq's Llama 3.3-70B model with a tool-calling workflow — it first introspects the database schema, then generates and executes SQL queries autonomously. The backend uses Turso (LibSQL) as the database with Drizzle ORM for schema management and migrations. Query execution is secured with multi-layer sanitization: only SELECT statements are allowed, forbidden keywords (INSERT, DROP, DELETE, etc.) are blocked, and multi-statement queries are rejected. The chat UI streams responses in real-time, displays SQL queries with syntax highlighting alongside tabular results, and persists conversation history in session storage for continuity across page refreshes.",
+            highlights: [
+                "Built an agentic tool-calling workflow where the AI autonomously fetches schema and executes SQL queries",
+                "Integrated Groq API (Llama 3.3-70B) with Vercel AI SDK for real-time streaming responses",
+                "Implemented multi-layer query sanitization — SELECT-only enforcement, forbidden keyword blocking, and multi-statement prevention",
+                "Used Turso (LibSQL) with Drizzle ORM for type-safe schema management and migrations",
+                "Designed a chat UI with live SQL query display, tabular result rendering, and loading state indicators",
+                "Added session storage-based message persistence for conversation continuity across page refreshes",
+            ],
+        },
         {
             title: "AI Chat Web App",
             slug: "ai-chat-web-app",
