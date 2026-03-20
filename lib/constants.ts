@@ -183,7 +183,7 @@ export const RESUME_DATA: ResumeData = {
             techStack: [
                 "Next.js", "TypeScript", "PostgreSQL", "Redis", "Drizzle ORM", "Groq API", "Zustand", "TanStack Query", "Docker", "Tailwind CSS",
             ],
-            description: "Full-stack AI chat application built with Next.js and PostgreSQL, featuring JWT-based authentication with secure httpOnly cookies. Integrates Groq API (Llama 3.3-70B) for intelligent responses, with a two-tier memory system using Redis for short - term context and automatic summarization for long - term recall.Supports multi- chat management with persistent message history and soft- delete architecture.",
+            description: "Full-stack AI chat application built with Next.js and PostgreSQL, featuring JWT-based authentication with secure httpOnly cookies. Integrates Groq API (Llama 3.3-70B) for intelligent responses, with a two-tier memory system using Redis for short-term context and automatic summarization for long-term recall. Supports multi-chat management with persistent message history and soft-delete architecture.",
             link: {
                 label: "GitHub",
                 href: "https://github.com/nitin0409sep/ai-chat-app",
@@ -212,7 +212,7 @@ export const RESUME_DATA: ResumeData = {
                 "pdf-parse",
                 "RAG",
             ],
-            description: "Node.js-based RAG (Retrieval-Augmented Generation) chatbot that answers employee questions using company policy documents. Loads PDFs, splits them into chunks, generates vector embeddings via HuggingFace, stores them in Pinecone, and uses Groq's Llama 3.3 70B model to provide context-aware answers through an interactive CLI",
+            description: "Node.js-based RAG (Retrieval-Augmented Generation) chatbot that answers employee questions using company policy documents. Loads PDFs, splits them into chunks, generates vector embeddings via HuggingFace, stores them in Pinecone, and uses Groq's Llama 3.3 70B model to provide context-aware answers through an interactive CLI.",
             link: {
                 label: "GitHub",
                 href: "https://github.com/nitin0409sep/rag-chat-bot",
@@ -229,6 +229,32 @@ export const RESUME_DATA: ResumeData = {
             ],
         },
         {
+            title: "Figma Extractor",
+            slug: "figma-extractor",
+            subtitle: "Design to Code Token Extraction Tool",
+            techStack: [
+                "Next.js",
+                "TypeScript",
+                "Figma API",
+                "Tailwind CSS",
+            ],
+            description: "A Next.js web app that extracts structured design data from Figma files — colors, typography, spacing tokens, CSS properties, Tailwind classes, and component mappings. Paste a Figma URL with your personal access token, and get a full breakdown of your design system in seconds.",
+            link: {
+                label: "GitHub",
+                href: "https://github.com/nitin0409sep/figma-extractor",
+            },
+            videoUrl: "",
+            details: "A Next.js tool that connects to the Figma REST API to extract design tokens and structured data from any Figma file or specific node. The app parses the full node tree recursively — collecting solid fill colors, typography styles (font family, size, weight, line height, letter spacing), and spacing values from auto-layout gaps and padding. Each node is mapped to CSS properties and corresponding Tailwind utility classes, with semantic HTML tag inference for component suggestions. Features rate limiting, input validation, theme toggling (light/dark/system), syntax-highlighted JSON preview with multi-tab views (Full JSON, CSS, Tailwind, Components), and one-click JSON download.",
+            highlights: [
+                "Built a recursive Figma node parser that extracts fills, strokes, effects, typography, and auto-layout properties",
+                "Implemented CSS and Tailwind mappers that convert Figma styles to usable code with closest-match algorithms",
+                "Designed a design token collector that deduplicates colors, typography, and spacing across the entire node tree",
+                "Integrated Figma REST API with support for full file and specific node extraction via URL parsing",
+                "Created expandable stat cards with slide animations showing extracted colors, typography, spacing, and components",
+                "Added syntax-highlighted JSON preview with multi-tab views for Full JSON, CSS, Tailwind, and Components",
+            ],
+        },
+        {
             title: "Cab Buddy",
             slug: "cab-buddy",
             subtitle: "Real-Time Ride Matching System",
@@ -240,8 +266,7 @@ export const RESUME_DATA: ResumeData = {
                 "Socket.io",
                 "Google Maps API",
             ],
-            description:
-                "MERN-based ride booking system supporting User and Captain roles with separate authentication flows. Features real-time ride updates via Socket.io, Google Maps integration for route visualization and fare estimation, and structured MongoDB schema models for ride lifecycle management.",
+            description: "MERN-based ride booking system supporting User and Captain roles with separate authentication flows. Features real-time ride updates via Socket.io, Google Maps integration for route visualization and fare estimation, and structured MongoDB schema models for ride lifecycle management.",
             link: {
                 label: "GitHub",
                 href: "https://github.com/nitin0409sep/Cab-Buddy",
@@ -269,8 +294,7 @@ export const RESUME_DATA: ResumeData = {
                 "Docker",
                 "JWT",
             ],
-            description:
-                "Full-stack blogging platform with secure JWT authentication and permission-driven content access. Features layered backend architecture with validation, containerized PostgreSQL database, and role-based content management.",
+            description: "Full-stack blogging platform with secure JWT authentication and permission-driven content access. Features layered backend architecture with validation, containerized PostgreSQL database, and role-based content management.",
             link: {
                 label: "Frontend",
                 href: "#",
@@ -301,8 +325,7 @@ export const RESUME_DATA: ResumeData = {
                 "MongoDB",
                 "Bootstrap",
             ],
-            description:
-                "Angular-based administrative dashboard with backend APIs using Node.js. Features authentication flows, structured database models, component-driven UI architecture, and maintainable backend services.",
+            description: "Angular-based administrative dashboard with backend APIs using Node.js. Features authentication flows, structured database models, component-driven UI architecture, and maintainable backend services.",
             link: {
                 label: "GitHub",
                 href: "https://github.com/nitin0409sep/Book-Nexus",
