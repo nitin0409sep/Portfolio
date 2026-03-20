@@ -255,7 +255,7 @@ export const RESUME_DATA: ResumeData = {
       },
       links: [
         { label: "GitHub", href: "https://github.com/nitin0409sep/figma-extractor" },
-        { label: "Live Demo", href: "https://sql-agent-beta-eight.vercel.app/" },
+        { label: "Live Demo", href: "https://figma-extractor-zeta.vercel.app/" },
       ],
       videoUrl: "",
       details:
